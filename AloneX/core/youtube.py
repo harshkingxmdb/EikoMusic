@@ -1,6 +1,172 @@
-# Copyright (c) 2025 TheHamkerAlone
-# Licensed under the MIT License.
-# This file is part of AloneXMusic
-# ALONE-CODER
+# FIX BY SHONA @THECDERQUEEN
+import os
+import re
+import aiohttp
+import random
+from py_yt import VideosSearch, Playlist
+from AloneX import logger, config
+from AloneX.helpers import Track, utils
 
-import zlib, base64; exec(zlib.decompress(base64.b64decode("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")).decode("utf-8"))
+API_URL = os.environ.get("SHRUTI_API_URL", "https://api.shrutibots.site")
+
+API_KEY = os.environ.get("SHRUTI_API_KEY", "ShrutiBotsq0pta5RkvDV1YH7lSaDU") ## Get This API KEY FROM TELEGRAM BOT USERNAME: @SHRUTIAPIBOT
+
+DOWNLOAD_DIR = "downloads"
+
+
+async def download_song(link: str) -> str:
+    video_id = link.split("v=")[-1].split("&")[0] if "v=" in link else link
+    if not video_id or len(video_id) < 3:
+        return None
+
+    os.makedirs(DOWNLOAD_DIR, exist_ok=True)
+    file_path = os.path.join(DOWNLOAD_DIR, f"{video_id}.mp3")
+    if os.path.exists(file_path) and os.path.getsize(file_path) > 0:
+        return file_path
+
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                f"{API_URL}/download",
+                params={"url": video_id, "type": "audio", "api_key": API_KEY},
+                timeout=aiohttp.ClientTimeout(total=300)
+            ) as resp:
+                if resp.status != 200:
+                    return None
+                with open(file_path, "wb") as f:
+                    async for chunk in resp.content.iter_chunked(131072):
+                        f.write(chunk)
+        if os.path.exists(file_path) and os.path.getsize(file_path) > 0:
+            return file_path
+        return None
+    except Exception:
+        if os.path.exists(file_path):
+            try:
+                os.remove(file_path)
+            except Exception:
+                pass
+        return None
+
+
+async def download_video(link: str) -> str:
+    video_id = link.split("v=")[-1].split("&")[0] if "v=" in link else link
+    if not video_id or len(video_id) < 3:
+        return None
+
+    os.makedirs(DOWNLOAD_DIR, exist_ok=True)
+    file_path = os.path.join(DOWNLOAD_DIR, f"{video_id}.mp4")
+    if os.path.exists(file_path) and os.path.getsize(file_path) > 0:
+        return file_path
+
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                f"{API_URL}/download",
+                params={"url": video_id, "type": "video", "api_key": API_KEY},
+                timeout=aiohttp.ClientTimeout(total=600)
+            ) as resp:
+                if resp.status != 200:
+                    return None
+                with open(file_path, "wb") as f:
+                    async for chunk in resp.content.iter_chunked(131072):
+                        f.write(chunk)
+        if os.path.exists(file_path) and os.path.getsize(file_path) > 0:
+            return file_path
+        return None
+    except Exception:
+        if os.path.exists(file_path):
+            try:
+                os.remove(file_path)
+            except Exception:
+                pass
+        return None
+
+
+class YouTube:
+    def __init__(self):
+        self.base = "https://www.youtube.com/watch?v="
+        self.regex = re.compile(
+            r"(https?://)?(www\.|m\.|music\.)?"
+            r"(youtube\.com/(watch\?v=|shorts/|playlist\?list=)|youtu\.be/)"
+            r"([A-Za-z0-9_-]{11}|PL[A-Za-z0-9_-]+)([&?][^\s]*)?"
+        )
+        self.cookie_dir = "AloneX/cookies"
+
+    def get_cookies(self):
+        if not os.path.exists(self.cookie_dir):
+            return None
+        cookies_files = [f for f in os.listdir(self.cookie_dir) if f.endswith(".txt")]
+        if not cookies_files:
+            return None
+        return os.path.join(self.cookie_dir, random.choice(cookies_files))
+
+    async def save_cookies(self, urls: list[str]) -> None:
+        logger.info("Saving cookies from urls...")
+        if not os.path.exists(self.cookie_dir):
+            os.makedirs(self.cookie_dir)
+        async with aiohttp.ClientSession() as session:
+            for i, url in enumerate(urls):
+                path = f"{self.cookie_dir}/cookie_{i}.txt"
+                link = "https://batbin.me/api/v2/paste/" + url.split("/")[-1]
+                async with session.get(link) as resp:
+                    resp.raise_for_status()
+                    with open(path, "wb") as fw:
+                        fw.write(await resp.read())
+        logger.info(f"Cookies saved in {self.cookie_dir}.")
+
+    def valid(self, url: str) -> bool:
+        return bool(re.match(self.regex, url))
+
+    async def search(self, query: str, m_id: int, video: bool = False) -> Track | None:
+        try:
+            _search = VideosSearch(query, limit=1)
+            results = await _search.next()
+            if results and results["result"]:
+                data = results["result"][0]
+                return Track(
+                    id=data.get("id"),
+                    channel_name=data.get("channel", {}).get("name"),
+                    duration=data.get("duration"),
+                    duration_sec=utils.to_seconds(data.get("duration")) if data.get("duration") else 0,
+                    message_id=m_id,
+                    title=data.get("title")[:25],
+                    thumbnail=data.get("thumbnails", [{}])[-1].get("url").split("?")[0],
+                    url=data.get("link"),
+                    view_count=data.get("viewCount", {}).get("short"),
+                    video=video,
+                )
+        except Exception as e:
+            logger.error(f"Search error: {e}")
+        return None
+
+    async def playlist(self, limit: int, user: str, url: str, video: bool) -> list[Track]:
+        tracks = []
+        try:
+            plist = await Playlist.get(url)
+            for data in plist.get("videos", [])[:limit]:
+                track = Track(
+                    id=data.get("id"),
+                    channel_name=data.get("channel", {}).get("name", ""),
+                    duration=data.get("duration"),
+                    duration_sec=utils.to_seconds(data.get("duration")) if data.get("duration") else 0,
+                    title=data.get("title")[:25],
+                    thumbnail=data.get("thumbnails", [{}])[-1].get("url").split("?")[0],
+                    url=data.get("link").split("&list=")[0],
+                    user=user,
+                    view_count="",
+                    video=video,
+                )
+                tracks.append(track)
+        except Exception as e:
+            logger.error(f"Playlist error: {e}")
+        return tracks
+
+    async def download(self, video_id: str, video: bool = False) -> str | None:
+        if not video_id or len(video_id) < 3:
+            return None
+
+        if video:
+            return await download_video(video_id)
+        else:
+            return await download_song(video_id)
+          
