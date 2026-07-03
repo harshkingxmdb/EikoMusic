@@ -19,7 +19,7 @@ class Thumbnail:
         self.width = 1280
         self.height = 720
 
-        self.album_size = 480
+        self.album_size = 520
         self.radius = 36
 
         self.font_title = ImageFont.truetype(
@@ -273,13 +273,6 @@ class Thumbnail:
 
             bg.alpha_composite(shadow, (frame_x - 20, frame_y - 20))
             bg.paste(album, (frame_x, frame_y), mask)
-
-            draw.rounded_rectangle(
-                (frame_x, frame_y, frame_x + self.album_size, frame_y + self.album_size),
-                radius=self.radius,
-                outline=(255, 255, 255, 90),
-                width=4,
-            )
 
             # ---------- right column ----------
             text_x = 716
