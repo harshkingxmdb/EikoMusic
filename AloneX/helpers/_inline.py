@@ -1,2 +1,199 @@
-#ALONE-CODER
-import zlib, base64; exec(zlib.decompress(base64.b64decode("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")).decode("utf-8"))
+# Copyright (c) 2025 TheHamkerAlone
+# Licensed under the MIT License.
+# This file is part of AloneXMusic
+
+
+from pyrogram import enums, types
+from pyrogram.enums import ButtonStyle
+
+from AloneX import app, config, lang
+from AloneX.core.lang import lang_codes
+
+
+class Inline:
+    def __init__(self):
+        self.ikm = types.InlineKeyboardMarkup
+        self.ikb = types.InlineKeyboardButton
+
+    def cancel_dl(self, text) -> types.InlineKeyboardMarkup:
+        return self.ikm([[self.ikb(text=text, callback_data=f"cancel_dl")]])
+
+    def controls(
+        self,
+        chat_id: int,
+        user_id: int = 0,
+        status: str = None,
+        timer: str = None,
+        remove: bool = False,
+        _lang: dict = None,
+    ) -> types.InlineKeyboardMarkup:
+        keyboard = []
+        if status:
+            keyboard.append(
+                [self.ikb(text=status, callback_data=f"controls status {chat_id}")]
+            )
+        elif timer:
+            keyboard.append(
+                [self.ikb(text=timer, callback_data=f"controls status {chat_id}", style=ButtonStyle.PRIMARY)]
+            )
+
+        if not remove:
+            keyboard.append(
+                [
+                    self.ikb(text="▷", callback_data=f"controls resume {chat_id}", style=ButtonStyle.SUCCESS),
+                    self.ikb(text="II", callback_data=f"controls pause {chat_id}", style=ButtonStyle.SUCCESS),
+                    self.ikb(text="⥁", callback_data=f"controls replay {chat_id}", style=ButtonStyle.PRIMARY),
+                    self.ikb(text="‣‣I", callback_data=f"controls skip {chat_id}", style=ButtonStyle.DANGER),
+                    self.ikb(text="▢", callback_data=f"controls stop {chat_id}", style=ButtonStyle.DANGER),
+                ]
+            )
+            if not _lang:
+                _lang = lang.languages["en"]
+            keyboard.append(
+                [
+                    self.ikb(
+                        text=_lang.get("add_me", "✙ 𝐀ᴅᴅ 𝐌є 𝐈η 𝐘συʀ 𝐆ʀσυᴘ ✙"),
+                        url=f"https://t.me/{app.username}?startgroup=true",
+                        style=ButtonStyle.PRIMARY,
+                    ),
+                ]
+            )
+            keyboard.append(
+                [
+                    self.ikb(
+                        text=_lang.get("channel", "˹ 𝐔ᴘᴅᴧᴛєs ˼"),
+                        url=config.SUPPORT_CHANNEL,
+                        style=ButtonStyle.SUCCESS,
+                    ),
+                    self.ikb(
+                        text=_lang.get("close", "⌯ 𝐂ʟσsє ⌯"),
+                        callback_data="help close",
+                        style=ButtonStyle.DANGER,
+                    ),
+                ]
+            )
+        return self.ikm(keyboard)
+
+
+    def help_markup(
+        self, _lang: dict, back: bool = False, user_id: int = 0
+    ) -> types.InlineKeyboardMarkup:
+        if back:
+            rows = [
+                [
+                    self.ikb(text=_lang["back"], callback_data="settings_back_helper", style=ButtonStyle.PRIMARY),
+                ]
+            ]
+        else:
+            cbs = ["admins", "auth", "blist", "lang", "ping", "play", "queue", "stats", "sudo"]
+            buttons = [
+                self.ikb(text=_lang[f"help_{i}"], callback_data=f"help {cb}", style=ButtonStyle.PRIMARY)
+                for i, cb in enumerate(cbs)
+            ]
+            rows = [buttons[i : i + 3] for i in range(0, len(buttons), 3)]
+            rows.append(
+                [
+                    self.ikb(text=_lang["close"], callback_data="settings_back_helper close", style=ButtonStyle.PRIMARY),
+                ]
+            )
+
+        return self.ikm(rows)
+
+    def lang_markup(self, _lang: str) -> types.InlineKeyboardMarkup:
+        langs = lang.get_languages()
+
+        buttons = [
+            self.ikb(
+                text=f"{name} ({code}) {'✔️' if code == _lang else ''}",
+                callback_data=f"lang_change {code}",
+            )
+            for code, name in langs.items()
+        ]
+        rows = [buttons[i : i + 2] for i in range(0, len(buttons), 2)]
+        return self.ikm(rows)
+
+    def ping_markup(self, text: str) -> types.InlineKeyboardMarkup:
+        return self.ikm([[self.ikb(text=text, url=config.SUPPORT_CHAT)]])
+
+    def play_queued(
+        self, chat_id: int, item_id: str, _text: str
+    ) -> types.InlineKeyboardMarkup:
+        return self.ikm(
+            [
+                [
+                    self.ikb(
+                        text=_text,
+                        callback_data=f"controls force {chat_id} {item_id}",
+                        style=ButtonStyle.SUCCESS,
+                    )
+                ]
+            ]
+        )
+
+    def queue_markup(
+        self, chat_id: int, _text: str, playing: bool
+    ) -> types.InlineKeyboardMarkup:
+        _action = "pause" if playing else "resume"
+        return self.ikm(
+            [
+                [
+                    self.ikb(
+                        text=_text,
+                        callback_data=f"controls {_action} {chat_id} q",
+                        style=ButtonStyle.SUCCESS,
+                    )
+                ]
+            ]
+        )
+
+    def settings_markup(
+        self, lang: dict, admin_only: bool, cmd_delete: bool, language: str, chat_id: int
+    ) -> types.InlineKeyboardMarkup:
+        return self.ikm(
+            [
+                [
+                    self.ikb(text=lang["play_mode"] + " ➜", callback_data="settings"),
+                    self.ikb(text=admin_only, callback_data="settings play"),
+                ],
+                [
+                    self.ikb(text=lang["cmd_delete"] + " ➜", callback_data="settings"),
+                    self.ikb(text=cmd_delete, callback_data="settings delete"),
+                ],
+                [
+                    self.ikb(text=lang["language"] + " ➜", callback_data="settings"),
+                    self.ikb(text=lang_codes[language], callback_data="language"),
+                ],
+            ]
+        )
+
+    def start_key(
+        self, lang: dict, private: bool = False
+    ) -> types.InlineKeyboardMarkup:
+        rows = [
+            [
+                self.ikb(text="˹ 𝐄ɪᴋᴏ 𝐌ᴀɴᴀɢᴇᴍᴇɴᴛ 𝐁ᴏᴛ 𝐑ᴇᴩᴏ ˼", url="https://github.com/TeamAloneOp/EikoRobot", style=ButtonStyle.SUCCESS)
+            ],
+            [self.ikb(text="˹ 𝐄ɪᴋᴏ 𝐌ᴜꜱɪᴄ 𝐁ᴏᴛ 𝐑ᴇᴩᴏ ˼", url="https://github.com/TeamAloneOp/EikoMusic", style=ButtonStyle.PRIMARY)],
+            [
+                self.ikb(text="˹ 𝐉ᴏɪɴ 𝐀ʟᴏɴᴇ 𝐀ʟʟ 𝐁ᴏᴛꜱ & 𝐒ᴏᴜʀᴄᴇ 𝐔ᴩᴅᴀᴛᴇꜱ ˼", url="https://t.me/AloneUpdates", style=ButtonStyle.SUCCESS),
+            ],
+        ]
+        if private:
+            rows += [
+                [
+                    self.ikb(text="˹ 𝐒ᴏᴜʀᴄᴇ 𝐃ᴇᴠᴏʟᴏᴩᴇʀ - 𝐀ʟᴏɴᴇ 𝐂ᴏᴅᴇʀ ˼", user_id=8458947967, style=ButtonStyle.DANGER)
+                ]
+            ]
+        else:
+            rows += [[self.ikb(text=lang["language"], callback_data="language")]]
+        return self.ikm(rows)
+
+    def yt_key(self, link: str) -> types.InlineKeyboardMarkup:
+        return self.ikm(
+            [
+                [
+                    self.ikb(text="❐", copy_text=link),
+                    self.ikb(text="Youtube", url=link),
+                ],
+            ]
+      )
